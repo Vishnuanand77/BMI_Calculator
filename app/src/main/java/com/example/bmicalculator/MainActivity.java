@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import static java.lang.Double.MAX_EXPONENT;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE = "BMI_Score";
 
     //XML resource declarations
 
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
             //Start a new Activity
             Intent intent = new Intent(this, ResultsPage.class);
-            intent.putExtra("BMI_Score", BMI_Result);
+            intent.putExtra(EXTRA_MESSAGE, BMI_Result);
             startActivity(intent);
         });
     }
