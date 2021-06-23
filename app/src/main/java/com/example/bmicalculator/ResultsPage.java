@@ -28,12 +28,15 @@ public class ResultsPage extends AppCompatActivity {
 
         if (BMI_Score >= 18.5 && BMI_Score <= 20.0) {
             BMIResult_display.setText("Perfect");
+            BMIResult_display.setTextColor(getResources().getColor(R.color.green));
         }
         if (BMI_Score >= 20.1 && BMI_Score <= 24.9) {
             BMIResult_display.setText("Decent");
+            BMIResult_display.setTextColor(getResources().getColor(R.color.yellow));
         }
         if (BMI_Score >= 25) {
             BMIResult_display.setText("Overweight");
+            BMIResult_display.setTextColor(getResources().getColor(R.color.red));
         }
 
     }
