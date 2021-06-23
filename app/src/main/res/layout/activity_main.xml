@@ -6,30 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/UserInput_Weight"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:ems="10"
-        android:hint="Weight"
-        android:inputType="number"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BMI_Output" />
+        app:layout_constraintTop_toBottomOf="@+id/BMI_Output">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Weight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/WeightDisplay"
+                android:layout_width="61dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:text="000"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/WeightSlider"
+                android:layout_width="271dp"
+                android:layout_height="48dp"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:stepSize="1.0"
+                android:valueFrom="40"
+                android:valueTo="150"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/WeightDisplay" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <EditText
         android:id="@+id/UserInput_Inches"
         android:layout_width="85dp"
         android:layout_height="49dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="96dp"
         android:ems="10"
         android:hint="Inches"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserInput_Weight" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <Button
         android:id="@+id/CalculateButton"
@@ -44,8 +84,8 @@
 
     <TextView
         android:id="@+id/BMI_Output"
-        android:layout_width="177dp"
-        android:layout_height="87dp"
+        android:layout_width="183dp"
+        android:layout_height="66dp"
         android:layout_marginTop="32dp"
         android:hint="BMI"
         android:textAlignment="center"
