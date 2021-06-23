@@ -90,7 +90,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Height_inch_card
-
+        Increment_Inch.setOnClickListener(v -> {
+            IncrementValue(HeightInInch_Display);
+        });
+        Decrement_Inch.setOnClickListener(v -> {
+            DecrementValue(HeightInInch_Display);
+        });
 
 
         //Calculate button
