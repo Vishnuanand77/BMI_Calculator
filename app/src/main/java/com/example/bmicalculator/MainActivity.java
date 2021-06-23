@@ -12,17 +12,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.slider.Slider;
 
 import org.jetbrains.annotations.NotNull;
+
+import static java.lang.Double.MAX_EXPONENT;
 
 public class MainActivity extends AppCompatActivity {
 
     //XML resource declarations
 
     //BMI Display TextView
-    TextView BMI_Display;
+//    TextView BMI_Display;
 
     //Weight Card Elements
     TextView WeightCard_Display;
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     Button CalculateBMIButton;
 
     //Variables
-    private double UserWeight = 0.0;
+    private double UserWeight = 0;
     private int userHeight_foot = 0;
     private int userHeight_inch = 0;
 
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //XML resource initializations
-        BMI_Display = findViewById(R.id.BMI_Output);
+//        BMI_Display = findViewById(R.id.BMI_Output);
         CalculateBMIButton = findViewById(R.id.CalculateButton);
 
         WeightCard_Display = findViewById(R.id.WeightDisplay);
@@ -83,26 +86,34 @@ public class MainActivity extends AppCompatActivity {
 
         //Height_foot_card
         Increment_Foot.setOnClickListener(v -> {
-            IncrementValue(HeightInFoot_Display);
+            IncrementValue(1);
         });
         Decrement_Foot.setOnClickListener(v -> {
-            DecrementValue(HeightInFoot_Display);
+            DecrementValue(1);
         });
 
         //Height_inch_card
         Increment_Inch.setOnClickListener(v -> {
-            IncrementValue(HeightInInch_Display);
+            IncrementValue(2);
         });
         Decrement_Inch.setOnClickListener(v -> {
-            DecrementValue(HeightInInch_Display);
+            DecrementValue(2);
         });
 
 
         //Calculate button
         CalculateBMIButton.setOnClickListener(v -> {
+
+//            Toast.makeText(this, "Foot : " + userHeight_foot + " Inch : " + userHeight_inch, Toast.LENGTH_SHORT).show();
+
+            //Getting values
+            UserWeight = Float.parseFloat(WeightCard_Display.getText().toString());
+            userHeight_foot = Integer.parseInt(HeightInFoot_Display.getText().toString());
+            userHeight_inch = Integer.parseInt(HeightInInch_Display.getText().toString());
+
             //Converting User Input into doubles
-            double HeightInFeet = 0.3048; //Converting Foot to meters
-            double HeightInInch = 0.0254; //Converting Inches to meters
+            double HeightInFeet = userHeight_foot * 0.3048; //Converting Foot to meters
+            double HeightInInch = userHeight_inch * 0.0254; //Converting Inches to meters
 
             Log.d("BMI Calculator :", String.valueOf(HeightInFeet));
             Log.d("BMI Calculator :", String.valueOf(HeightInInch));
@@ -112,30 +123,68 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void DecrementValue(TextView DisplayText) {
-        userHeight_foot = Integer.parseInt(DisplayText.getText().toString());
-        if(!(userHeight_foot <= 0) ) {
-            userHeight_foot -= 1;
-            DisplayText.setText(String.valueOf(userHeight_foot));
+    private void DecrementValue(int switcher) {
+
+        switch (switcher) {
+            case 1:
+                userHeight_foot = Integer.parseInt(HeightInFoot_Display.getText().toString());
+                if(!(userHeight_foot <= 0) ) {
+                    userHeight_foot -= 1;
+                    HeightInFoot_Display.setText(String.valueOf(userHeight_foot));
+                }
+                if (userHeight_foot <= 0){
+                    userHeight_foot = 0;
+                    HeightInFoot_Display.setText(String.valueOf(userHeight_foot));
+                }
+                break;
+            case 2:
+                userHeight_inch = Integer.parseInt(HeightInInch_Display.getText().toString());
+                if(!(userHeight_inch <= 0) ) {
+                    userHeight_inch -= 1;
+                    HeightInInch_Display.setText(String.valueOf(userHeight_inch));
+                }
+                if (userHeight_inch <= 0){
+                    userHeight_inch = 0;
+                    HeightInInch_Display.setText(String.valueOf(userHeight_inch));
+                }
+                break;
+            default:
+                userHeight_inch = 0;
+                userHeight_foot = 0;
+                HeightInFoot_Display.setText(userHeight_foot);
+                HeightInInch_Display.setText(userHeight_inch);
+                break;
         }
-        if (userHeight_foot <= 0){
-            userHeight_foot = 0;
-            DisplayText.setText(String.valueOf(userHeight_foot));
-        }
+
     }
 
-    private void IncrementValue(TextView DisplayText) {
-        userHeight_foot = Integer.parseInt(DisplayText.getText().toString());
-        userHeight_foot +=1;
-        DisplayText.setText(String.valueOf(userHeight_foot));
+    private void IncrementValue(int switcher) {
+        switch (switcher) {
+            case 1:
+                userHeight_foot = Integer.parseInt(HeightInFoot_Display.getText().toString());
+                userHeight_foot +=1;
+                HeightInFoot_Display.setText(String.valueOf(userHeight_foot));
+                break;
+            case 2:
+                userHeight_inch = Integer.parseInt(HeightInInch_Display.getText().toString());
+                userHeight_inch +=1;
+                HeightInInch_Display.setText(String.valueOf(userHeight_inch));
+                break;
+            default:
+                userHeight_inch = 0;
+                userHeight_foot = 0;
+                HeightInFoot_Display.setText(userHeight_foot);
+                HeightInInch_Display.setText(userHeight_inch);
+                break;
+        }
+
     }
 
     private void calculateBMI(double Weight, double HeightInFeet, double HeightInInch) {
         //Calculating BMI
-        double BMI = Weight/Math.pow(HeightInFeet + HeightInInch, 2);
-
+        double BMI = (int) Weight/Math.pow(HeightInFeet + HeightInInch, 2);
         //Assigning BMI value to TextView
-        BMI_Display.setText(String.valueOf(BMI));
+//        BMI_Display.setText(String.valueOf(BMI));
 
         //Logs
         Log.d("BMI Calculator :", String.valueOf(BMI));
