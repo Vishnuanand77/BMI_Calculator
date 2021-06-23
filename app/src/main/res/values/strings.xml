@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">BMICalculator</string>
-    
+
     <string name="HeightInFootPrompt">Foot</string>
-    
+
     <string-array name="HeightInFoot">
         <item>4</item>
         <item>5</item>

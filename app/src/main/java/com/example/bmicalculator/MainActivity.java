@@ -3,6 +3,7 @@ package com.example.bmicalculator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private double UserWeight = 0;
     private int userHeight_foot = 0;
     private int userHeight_inch = 0;
+    private double BMI_Result = 0;
 
 
     @Override
@@ -100,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
             DecrementValue(2);
         });
 
-
         //Calculate button
         CalculateBMIButton.setOnClickListener(v -> {
 
@@ -120,6 +121,11 @@ public class MainActivity extends AppCompatActivity {
 
             //Calculating BMI
             calculateBMI(UserWeight, HeightInFeet, HeightInInch);
+
+            //Start a new Activity
+            Intent intent = new Intent(this, ResultsPage.class);
+            intent.putExtra("BMI_Score", BMI_Result);
+            startActivity(intent);
         });
     }
 
@@ -185,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         double BMI = (int) Weight/Math.pow(HeightInFeet + HeightInInch, 2);
         //Assigning BMI value to TextView
 //        BMI_Display.setText(String.valueOf(BMI));
-
+        BMI_Result = BMI;
         //Logs
         Log.d("BMI Calculator :", String.valueOf(BMI));
     }

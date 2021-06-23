@@ -10,7 +10,7 @@
         android:id="@+id/WeightCard"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Weight"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -60,10 +61,11 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginBottom="10dp"
                 android:text="Kg"
-                app:layout_constraintStart_toEndOf="@+id/WeightDisplay"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/WeightSlider"
+                app:layout_constraintStart_toEndOf="@+id/WeightDisplay" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
