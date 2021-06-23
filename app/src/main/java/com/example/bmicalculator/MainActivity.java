@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     TextView BMI_Display;
     EditText UserWeight, UserFoot, UserInches;
     Button CalculateButton;
+    Spinner FeetSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         UserFoot = findViewById(R.id.UserInput_Foot);
         UserInches = findViewById(R.id.UserInput_Inches);
         CalculateButton = findViewById(R.id.CalculateButton);
+        FeetSpinner = findViewById(R.id.FootSpinner);
 
         CalculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
