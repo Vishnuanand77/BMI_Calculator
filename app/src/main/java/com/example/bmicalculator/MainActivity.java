@@ -5,19 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     //XML resource declarations
     TextView BMI_Display;
     EditText UserWeight, UserFoot, UserInches;
     Button CalculateButton;
     Spinner FeetSpinner;
+
+    String UserHeight_Foot = "";
+    String UserHeight_Inch = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         FeetSpinner.setAdapter(adapter);
+
+        //Spinner onClick Listener
+        FeetSpinner.setOnItemSelectedListener(this);
 
         CalculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,5 +68,15 @@ public class MainActivity extends AppCompatActivity {
                 BMI_Display.setText(String.valueOf(BMI));
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        UserHeight_Foot = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
