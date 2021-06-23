@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //XML resource initializations
         BMI_Display = findViewById(R.id.BMI_Output);
         UserWeight = findViewById(R.id.UserInput_Weight);
-        UserFoot = findViewById(R.id.UserInput_Foot);
+//        UserFoot = findViewById(R.id.UserInput_Foot);
         UserInches = findViewById(R.id.UserInput_Inches);
         CalculateButton = findViewById(R.id.CalculateButton);
         FeetSpinner = findViewById(R.id.FootSpinner);
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onClick(View v) {
                 //Converting User Input into doubles
                 double Weight = Float.parseFloat(UserWeight.getText().toString());
-                double HeightInFeet = Float.parseFloat(UserFoot.getText().toString()) * 0.3048; //Converting Foot to meters
+                double HeightInFeet = Float.parseFloat(UserHeight_Foot) * 0.3048; //Converting Foot to meters
                 double HeightInInch = Float.parseFloat(UserInches.getText().toString()) * 0.0254; //Converting Inches to meters
 
                 Log.d("BMI Calculator :", String.valueOf(HeightInFeet));
