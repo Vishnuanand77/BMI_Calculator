@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     //XML resource declarations
     TextView BMI_Display, WeightDisplay;
-    EditText UserInches;
     Button CalculateButton;
 
     //Slider
@@ -37,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         //XML resource initializations
         BMI_Display = findViewById(R.id.BMI_Output);
         WeightDisplay = findViewById(R.id.WeightDisplay);
-        UserInches = findViewById(R.id.UserInput_Inches);
         CalculateButton = findViewById(R.id.CalculateButton);
 
         //Slider
@@ -60,21 +58,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        CalculateButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //Converting User Input into doubles
-//                double Weight = Float.parseFloat(UserWeight.getText().toString());
-//                double HeightInFeet = Float.parseFloat(UserFoot.getText().toString()) * 0.3048; //Converting Foot to meters
-//                double HeightInInch = Float.parseFloat(UserInches.getText().toString()) * 0.0254; //Converting Inches to meters
-//
-//                Log.d("BMI Calculator :", String.valueOf(HeightInFeet));
-//                Log.d("BMI Calculator :", String.valueOf(HeightInInch));
-//
-//                //Calculating BMI
-//                calculateBMI(Weight, HeightInFeet, HeightInInch);
-//            }
-//        });
+        CalculateButton.setOnClickListener(v -> {
+            //Converting User Input into doubles
+            double HeightInFeet = 0.3048; //Converting Foot to meters
+            double HeightInInch = 0.0254; //Converting Inches to meters
+
+            Log.d("BMI Calculator :", String.valueOf(HeightInFeet));
+            Log.d("BMI Calculator :", String.valueOf(HeightInInch));
+
+            //Calculating BMI
+            calculateBMI(UserWeight, HeightInFeet, HeightInInch);
+        });
     }
 
     private void calculateBMI(double Weight, double HeightInFeet, double HeightInInch) {
