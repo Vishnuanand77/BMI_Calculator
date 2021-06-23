@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //XML resource initializations
 //        BMI_Display = findViewById(R.id.BMI_Output);
         CalculateBMIButton = findViewById(R.id.CalculateButton);
