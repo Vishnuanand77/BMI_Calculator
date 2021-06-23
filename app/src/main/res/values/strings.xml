@@ -4,9 +4,9 @@
     <string name="HeightInFootPrompt">Foot</string>
     
     <string-array name="HeightInFoot">
-        <item>4'</item>
-        <item>5'</item>
-        <item>6'</item>
-        <item>7'</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
     </string-array>
 </resources>

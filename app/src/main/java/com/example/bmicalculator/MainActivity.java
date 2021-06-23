@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -30,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
         UserInches = findViewById(R.id.UserInput_Inches);
         CalculateButton = findViewById(R.id.CalculateButton);
         FeetSpinner = findViewById(R.id.FootSpinner);
+
+        //Array adapter for the spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.HeightInFoot, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        FeetSpinner.setAdapter(adapter);
 
         CalculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
