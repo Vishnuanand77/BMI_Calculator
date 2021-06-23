@@ -20,12 +20,26 @@ import org.jetbrains.annotations.NotNull;
 public class MainActivity extends AppCompatActivity {
 
     //XML resource declarations
-    TextView BMI_Display, WeightDisplay;
-    Button CalculateButton;
 
-    //Slider
+    //BMI Display TextView
+    TextView BMI_Display;
+
+    //Weight Card Elements
+    TextView WeightCard_Display;
     Slider WeightSlider;
-    double UserWeight = 0;
+
+    //Height in foot card
+    TextView HeightInFoot_Display;
+    Button Increment_Foot, Decrement_Foot;
+
+    //Height in Inch card
+    TextView HeightInInch_Display;
+    Button Increment_Inch, Decrement_Inch;
+
+    //Calculate button
+    Button CalculateBMIButton;
+
+    private double UserWeight = 0.0;
 
 
     @Override
@@ -35,11 +49,18 @@ public class MainActivity extends AppCompatActivity {
 
         //XML resource initializations
         BMI_Display = findViewById(R.id.BMI_Output);
-        WeightDisplay = findViewById(R.id.WeightDisplay);
-        CalculateButton = findViewById(R.id.CalculateButton);
+        CalculateBMIButton = findViewById(R.id.CalculateButton);
 
-        //Slider
+        WeightCard_Display = findViewById(R.id.WeightDisplay);
         WeightSlider = findViewById(R.id.WeightSlider);
+
+        HeightInFoot_Display = findViewById(R.id.height_Foot_Display);
+        Increment_Foot = findViewById(R.id.incrementWeightButton_Foot);
+        Decrement_Foot = findViewById(R.id.decrementWeightButton_Foot);
+
+        HeightInInch_Display = findViewById(R.id.height_Inch_Display);
+        Increment_Inch = findViewById(R.id.incrementWeightButton_Inch);
+        Decrement_Inch = findViewById(R.id.decrementWeightButton_Inch);
 
         WeightSlider.addOnSliderTouchListener(new Slider.OnSliderTouchListener() {
 
@@ -51,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(@NonNull @NotNull Slider slider) {
                 UserWeight = Float.parseFloat(String.valueOf(slider.getValue()));
-                WeightDisplay.setText(String.valueOf(UserWeight));
+                WeightCard_Display.setText(String.valueOf(UserWeight));
                 Log.d("BMI Calculator : Slider Value", String.valueOf(UserWeight));
             }
 
         });
 
 
-        CalculateButton.setOnClickListener(v -> {
+        CalculateBMIButton.setOnClickListener(v -> {
             //Converting User Input into doubles
             double HeightInFeet = 0.3048; //Converting Foot to meters
             double HeightInInch = 0.0254; //Converting Inches to meters
