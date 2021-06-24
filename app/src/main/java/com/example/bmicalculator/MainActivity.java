@@ -3,25 +3,16 @@ package com.example.bmicalculator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.slider.Slider;
 
 import org.jetbrains.annotations.NotNull;
-
-import static android.app.ActionBar.*;
-import static java.lang.Double.MAX_EXPONENT;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "BMI_Score";
@@ -125,12 +116,17 @@ public class MainActivity extends AppCompatActivity {
             Log.d("BMI Calculator :", String.valueOf(HeightInInch));
 
             //Calculating BMI
-            calculateBMI(UserWeight, HeightInFeet, HeightInInch);
-
-            //Start a new Activity
-            Intent intent = new Intent(this, ResultsPage.class);
-            intent.putExtra(EXTRA_MESSAGE, BMI_Result);
-            startActivity(intent);
+            double result = calculateBMI(UserWeight, HeightInFeet, HeightInInch);
+            
+            //Check if BMI is less than 18.5
+            if (result >= 18.5 && result <= 40) {
+                //Start a new Activity
+                Intent intent = new Intent(this, ResultsPage.class);
+                intent.putExtra(EXTRA_MESSAGE, BMI_Result);
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Check your inputs!", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -191,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void calculateBMI(double Weight, double HeightInFeet, double HeightInInch) {
+    private double calculateBMI(double Weight, double HeightInFeet, double HeightInInch) {
         //Calculating BMI
         double BMI = (int) Weight/Math.pow(HeightInFeet + HeightInInch, 2);
         //Assigning BMI value to TextView
@@ -199,5 +195,6 @@ public class MainActivity extends AppCompatActivity {
         BMI_Result = BMI;
         //Logs
         Log.d("BMI Calculator :", String.valueOf(BMI));
+        return BMI;
     }
 }

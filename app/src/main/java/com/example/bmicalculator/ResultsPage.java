@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ResultsPage extends AppCompatActivity {
 
@@ -39,6 +40,10 @@ public class ResultsPage extends AppCompatActivity {
         if (BMI_Score >= 25) {
             BMIResult_display.setText("Overweight");
             BMIResult_display.setTextColor(getResources().getColor(R.color.red));
+        } else {
+            BMIResult_display.setText("");
+            BMIScore_display.setText("");
+            Toast.makeText(this, "Oops check your input!", Toast.LENGTH_SHORT).show();
         }
 
     }
