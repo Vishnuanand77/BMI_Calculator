@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">BMI Calculator</string>
+    <string name="underwreight">UnderWeight</string>
+    <string name="perfect">Perfect</string>
+    <string name="decent">Decent</string>
+    <string name="overweight">Overweight</string>
 
 </resources>

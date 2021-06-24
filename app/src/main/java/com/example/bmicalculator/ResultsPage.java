@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import java.util.Objects;
 
 public class ResultsPage extends AppCompatActivity {
 
@@ -40,19 +37,19 @@ public class ResultsPage extends AppCompatActivity {
         BMIScore_display.setText(String.valueOf(BMI_Score_int));
 
         if (BMI_Score < 18.5) {
-            BMIResult_display.setText("UnderWeight");
+            BMIResult_display.setText(R.string.underwreight);
             BMIResult_display.setTextColor(getResources().getColor(R.color.red));
         }
         else if (BMI_Score >= 18.5 && BMI_Score <= 20.4) {
-            BMIResult_display.setText("Perfect");
+            BMIResult_display.setText(R.string.perfect);
             BMIResult_display.setTextColor(getResources().getColor(R.color.green));
         }
         else if (BMI_Score >= 20.5 && BMI_Score <= 24.9) {
-            BMIResult_display.setText("Decent");
+            BMIResult_display.setText(R.string.decent);
             BMIResult_display.setTextColor(getResources().getColor(R.color.yellow));
         }
         else if (BMI_Score >= 25) {
-            BMIResult_display.setText("Overweight");
+            BMIResult_display.setText(R.string.overweight);
             BMIResult_display.setTextColor(getResources().getColor(R.color.red));
         } else {
             BMIResult_display.setText("");
@@ -60,17 +57,8 @@ public class ResultsPage extends AppCompatActivity {
             Toast.makeText(this, "Oops check your input!", Toast.LENGTH_SHORT).show();
         }
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        backButton.setOnClickListener(v -> finish());
 
     }
 
-    private void setSupportActionBar(Toolbar toolbar) {
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }
 }
