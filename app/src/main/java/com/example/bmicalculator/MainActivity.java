@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.slider.Slider;
 
@@ -41,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private double UserWeight = 0;
     private int userHeight_foot = 0;
     private int userHeight_inch = 0;
-    private double BMI_Result = 0;
 
 
     @Override
@@ -83,20 +81,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Height_foot_card
-        Increment_Foot.setOnClickListener(v -> {
-            IncrementValue(1);
-        });
-        Decrement_Foot.setOnClickListener(v -> {
-            DecrementValue(1);
-        });
+        Increment_Foot.setOnClickListener(v -> IncrementValue(1));
+        Decrement_Foot.setOnClickListener(v -> DecrementValue(1));
 
         //Height_inch_card
-        Increment_Inch.setOnClickListener(v -> {
-            IncrementValue(2);
-        });
-        Decrement_Inch.setOnClickListener(v -> {
-            DecrementValue(2);
-        });
+        Increment_Inch.setOnClickListener(v -> IncrementValue(2));
+        Decrement_Inch.setOnClickListener(v -> DecrementValue(2));
 
         //Calculate button
         CalculateBMIButton.setOnClickListener(v -> {
@@ -186,9 +176,6 @@ public class MainActivity extends AppCompatActivity {
     private double calculateBMI(double Weight, double HeightInFeet, double HeightInInch) {
         //Calculating BMI
         double BMI = (int) Weight/Math.pow(HeightInFeet + HeightInInch, 2);
-        //Assigning BMI value to TextView
-//        BMI_Display.setText(String.valueOf(BMI));
-        BMI_Result = BMI;
         //Logs
         Log.d("BMI Calculator :", String.valueOf(BMI));
         return BMI;
