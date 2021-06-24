@@ -117,16 +117,12 @@ public class MainActivity extends AppCompatActivity {
 
             //Calculating BMI
             double result = calculateBMI(UserWeight, HeightInFeet, HeightInInch);
-            
-            //Check if BMI is less than 18.5
-            if (result >= 18 && result <= 40) {
-                //Start a new Activity
-                Intent intent = new Intent(this, ResultsPage.class);
-                intent.putExtra(EXTRA_MESSAGE, BMI_Result);
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, "Check your inputs!", Toast.LENGTH_SHORT).show();
-            }
+            Log.d("BMI Calculator : BMI SCORE", String.valueOf(result));
+
+            //Start a new Activity
+            Intent intent = new Intent(this, ResultsPage.class);
+            intent.putExtra(EXTRA_MESSAGE, result);
+            startActivity(intent);
         });
     }
 

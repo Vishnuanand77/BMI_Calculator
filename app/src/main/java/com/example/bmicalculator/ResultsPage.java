@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ public class ResultsPage extends AppCompatActivity {
 
         BMIScore_display = findViewById(R.id.BMIScoreDisplay);
         BMIResult_display = findViewById(R.id.BMI_resultDisplay);
+        backButton = findViewById(R.id.backbutton);
 
         //Getting BMI score from previous activity
         Intent intent = getIntent();
@@ -37,7 +39,11 @@ public class ResultsPage extends AppCompatActivity {
 
         BMIScore_display.setText(String.valueOf(BMI_Score_int));
 
-        if (BMI_Score >= 18.5 && BMI_Score <= 20.4) {
+        if (BMI_Score < 18.5) {
+            BMIResult_display.setText("UnderWeight");
+            BMIResult_display.setTextColor(getResources().getColor(R.color.red));
+        }
+        else if (BMI_Score >= 18.5 && BMI_Score <= 20.4) {
             BMIResult_display.setText("Perfect");
             BMIResult_display.setTextColor(getResources().getColor(R.color.green));
         }
@@ -53,6 +59,13 @@ public class ResultsPage extends AppCompatActivity {
             BMIScore_display.setText("");
             Toast.makeText(this, "Oops check your input!", Toast.LENGTH_SHORT).show();
         }
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
