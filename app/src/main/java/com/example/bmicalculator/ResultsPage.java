@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ResultsPage extends AppCompatActivity {
 
     TextView BMIScore_display, BMIResult_display;
+    Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,5 +41,6 @@ public class ResultsPage extends AppCompatActivity {
             BMIResult_display.setTextColor(getResources().getColor(R.color.red));
         }
 
+        backButton.setOnClickListener(v -> finish());
     }
 }
