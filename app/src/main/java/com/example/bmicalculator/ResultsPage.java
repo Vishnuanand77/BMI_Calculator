@@ -41,6 +41,5 @@ public class ResultsPage extends AppCompatActivity {
             BMIResult_display.setTextColor(getResources().getColor(R.color.red));
         }
 
-        backButton.setOnClickListener(v -> finish());
     }
 }
