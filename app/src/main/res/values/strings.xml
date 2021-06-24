@@ -4,5 +4,9 @@
     <string name="perfect">Perfect</string>
     <string name="decent">Decent</string>
     <string name="overweight">Overweight</string>
+    <string name="bmi">BMI</string>
+    <string name="your_bmi_result_is">Your BMI Result is :</string>
+    <string name="normal_bmi_range_n_n_18_5_25_kg_m2">Normal BMI range: \n\n 18.5 - 25 kg/m2</string>
+    <string name="back">Back</string>
 
 </resources>
