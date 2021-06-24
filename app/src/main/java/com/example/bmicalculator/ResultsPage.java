@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
+import java.util.Objects;
 
 public class ResultsPage extends AppCompatActivity {
 
@@ -17,6 +20,10 @@ public class ResultsPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_page);
+        
+//        Toolbar toolbar = findViewById(R.id.materialToolbar2);
+//        setSupportActionBar(toolbar);
+
 
         BMIScore_display = findViewById(R.id.BMIScoreDisplay);
         BMIResult_display = findViewById(R.id.BMI_resultDisplay);
@@ -47,5 +54,10 @@ public class ResultsPage extends AppCompatActivity {
             Toast.makeText(this, "Oops check your input!", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void setSupportActionBar(Toolbar toolbar) {
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 }

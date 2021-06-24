@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             double result = calculateBMI(UserWeight, HeightInFeet, HeightInInch);
             
             //Check if BMI is less than 18.5
-            if (result >= 18.5 && result <= 40) {
+            if (result >= 18 && result <= 40) {
                 //Start a new Activity
                 Intent intent = new Intent(this, ResultsPage.class);
                 intent.putExtra(EXTRA_MESSAGE, BMI_Result);
